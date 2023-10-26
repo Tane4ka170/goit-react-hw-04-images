@@ -1,0 +1,13 @@
+.loaderContainer {
+  position: relative; /* Батьківський контейнер з відносним позиціонуванням */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  position: absolute;
+  top: 50%; /* Вертикальне центрування відносно батьківського контейнера */
+  left: 50%; /* Горизонтальне центрування відносно батьківського контейнера */
+  transform: translate(-50%, -50%);
+}

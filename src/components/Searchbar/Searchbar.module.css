@@ -1,0 +1,55 @@
+.searchbar {
+  background-color: #17b69e;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background-image: url(https://cdn-icons-png.flaticon.com/512/650/650154.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  opacity: 0.6;
+  outline: none;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 48px;
+}
+.btn:hover {
+  background-color: #7f8e4a;
+  color: #fff;
+}
+
+.buttonLabel {
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #4365a5;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #1abd78;
+  color: #fff;
+}
+
+.input::placeholder {
+  color: #7dcf51;
+}
