@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import s from './Modal.module.css';
 
 function Modal({ largeImageURL, onClose }) {
-  const handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      onClose();
-    }
-  };
-
   const handleClose = e => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
+  const handleKeyDown = useCallback(
+    e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  }, [handleKeyDown]);
 
   return (
     <div className={s.overlay} onClick={handleClose}>

@@ -16,22 +16,22 @@ function App() {
   const [largeImageURL, setLargeImageURL] = useState('');
   const [totalResults, setTotalResults] = useState(0);
 
-  const fetchImages = () => {
-    setIsLoading(true);
-    api
-      .fetchImages(query, page)
-      .then(response => {
-        setImages(prevImages => [...prevImages, ...response.data.hits]);
-        setIsLoading(false);
-        setTotalResults(response.data.totalHits);
-      })
-      .catch(error => {
-        console.error('Error fetching images:', error);
-        setIsLoading(false);
-      });
-  };
-
   useEffect(() => {
+    const fetchImages = () => {
+      setIsLoading(true);
+      api
+        .fetchImages(query, page)
+        .then(response => {
+          setImages(prevImages => [...prevImages, ...response.data.hits]);
+          setIsLoading(false);
+          setTotalResults(response.data.totalHits);
+        })
+        .catch(error => {
+          console.error('Error fetching images:', error);
+          setIsLoading(false);
+        });
+    };
+
     if (query !== '') {
       fetchImages();
     }
