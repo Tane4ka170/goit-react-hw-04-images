@@ -16,12 +16,6 @@ function App() {
   const [largeImageURL, setLargeImageURL] = useState('');
   const [totalResults, setTotalResults] = useState(0);
 
-  useEffect(() => {
-    if (query !== '') {
-      fetchImages();
-    }
-  }, [query, page]);
-
   const fetchImages = () => {
     setIsLoading(true);
     api
@@ -36,6 +30,12 @@ function App() {
         setIsLoading(false);
       });
   };
+
+  useEffect(() => {
+    if (query !== '') {
+      fetchImages();
+    }
+  }, [query, page]);
 
   const handleSearchSubmit = newQuery => {
     setQuery(newQuery);
