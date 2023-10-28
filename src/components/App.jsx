@@ -6,6 +6,8 @@ import Button from './Button/Button';
 import Modal from './Modal/Modal';
 import Spinner from './Loader/Loader';
 import api from '../Helpers/api';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -25,10 +27,16 @@ function App() {
           setImages(prevImages => [...prevImages, ...response.data.hits]);
           setIsLoading(false);
           setTotalResults(response.data.totalHits);
+          if (response.data.totalHits === 0) {
+            toast.warning('No images found for the given query.');
+          } else {
+            toast.success('Images fetched successfully!');
+          }
         })
         .catch(error => {
           console.error('Error fetching images:', error);
           setIsLoading(false);
+          toast.error('Error fetching images. Please try again.');
         });
     };
 
@@ -77,6 +85,7 @@ function App() {
       {showModal && (
         <Modal largeImageURL={largeImageURL} onClose={handleCloseModal} />
       )}
+      <ToastContainer />
     </div>
   );
 }
